@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hudson_pool_customer_tree" model="ir.ui.view">
+        <field name="name">hudson.pool.customer.tree</field>
+        <field name="model">hudson.pool.customer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="pool_count"/>
+                <field name="latest_cleaning_state"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hudson_pool_customer_form" model="ir.ui.view">
+        <field name="name">hudson.pool.customer.form</field>
+        <field name="model">hudson.pool.customer</field>
+        <field name="arch" type="xml">
+            <form string="Data Customer">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="address"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Kolam">
+                            <field name="pool_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="cleaning_type_id"/>
+                                    <field name="state"/>
+                                    <field name="next_cleaning_date"/>
+                                </tree>
+                                <form string="Kolam">
+                                    <sheet>
+                                        <group>
+                                            <field name="name"/>
+                                            <field name="cleaning_type_id"/>
+                                            <field name="state"/>
+                                            <field name="next_cleaning_date"/>
+                                        </group>
+                                    </sheet>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Aktivitas">
+                            <field name="pool_ids" widget="one2many_list" context="{'active_test': False}">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="state"/>
+                                    <field name="cleaning_job_count"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hudson_pool_customer_search" model="ir.ui.view">
+        <field name="name">hudson.pool.customer.search</field>
+        <field name="model">hudson.pool.customer</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Nama"/>
+                <field name="phone" string="Telepon"/>
+                <field name="email" string="Email"/>
+                <filter string="Aktif" name="active" domain="[('active','=',True)]"/>
+                <filter string="Tidak Aktif" name="inactive" domain="[('active','=',False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Status Terbaru" context="{'group_by':'latest_cleaning_state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

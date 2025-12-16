@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hudson_pool_dashboard_record" model="hudson.pool.dashboard">
+    </record>
+</odoo>

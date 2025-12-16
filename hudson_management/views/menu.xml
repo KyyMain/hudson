@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="menu_hudson_root" name="Hudson Management" sequence="5" groups="group_hudson_pool_user"/>
+
+    <menuitem id="menu_pool_root" name="Divisi Kolam Renang" parent="menu_hudson_root" sequence="1" groups="group_hudson_pool_user"/>
+
+    <record id="action_pool_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">hudson.pool.dashboard</field>
+        <field name="view_mode">kanban</field>
+        <field name="target">current</field>
+        <field name="context">{"search_default_first": 1}</field>
+    </record>
+    <menuitem id="menu_pool_dashboard" name="Dashboard" parent="menu_pool_root" action="action_pool_dashboard" sequence="1" groups="group_hudson_pool_user"/>
+
+    <record id="action_pool_customers" model="ir.actions.act_window">
+        <field name="name">Data Pelanggan</field>
+        <field name="res_model">hudson.pool.customer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{"default_active": True}</field>
+    </record>
+    <menuitem id="menu_pool_customers" name="Data Customer" parent="menu_pool_root" action="action_pool_customers" sequence="2" groups="group_hudson_pool_user"/>
+
+    <record id="action_pools" model="ir.actions.act_window">
+        <field name="name">Data Kolam</field>
+        <field name="res_model">hudson.pool</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_pools" name="Data Kolam" parent="menu_pool_root" action="action_pools" sequence="3" groups="group_hudson_pool_user"/>
+
+    <record id="action_pool_cleaning_jobs" model="ir.actions.act_window">
+        <field name="name">Pembersihan Kolam</field>
+        <field name="res_model">hudson.pool.cleaning.job</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[("state", "!=", "draft")]</field>
+    </record>
+    <menuitem id="menu_pool_cleaning_jobs" name="Tugas Pembersihan" parent="menu_pool_root" action="action_pool_cleaning_jobs" sequence="4" groups="group_hudson_pool_user"/>
+
+    <record id="action_pool_finance_entries" model="ir.actions.act_window">
+        <field name="name">Laporan Keuangan</field>
+        <field name="res_model">hudson.pool.finance.entry</field>
+        <field name="view_mode">tree,pivot,graph</field>
+    </record>
+    <menuitem id="menu_pool_finance_entries" name="Laporan Keuangan" parent="menu_pool_root" action="action_pool_finance_entries" sequence="5" groups="group_hudson_pool_user"/>
+</odoo>

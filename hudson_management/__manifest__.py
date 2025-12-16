@@ -1,0 +1,22 @@
+{
+    "name": "Hudson Management",
+    "summary": "Divisi kolam renang dengan dashboard admin, data pelanggan, dan laporan.",
+    "version": "16.0.1.0.0",
+    "author": "Hudson",
+    "license": "LGPL-3",
+    "depends": ["base", "mail"],
+    "data": [
+        "security/hudson_security.xml",
+        "security/ir.model.access.csv",
+        "data/pool_cleaning_types.xml",
+        "data/dashboard.xml",
+        "views/menu.xml",
+        "views/dashboard_view.xml",
+        "views/customer_view.xml",
+        "views/pool_view.xml",
+        "views/cleaning_view.xml",
+        "views/finance_view.xml",
+    ],
+    "application": True,
+    "installable": True,
+}

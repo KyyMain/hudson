@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hudson_pool_finance_tree" model="ir.ui.view">
+        <field name="name">hudson.pool.finance.tree</field>
+        <field name="model">hudson.pool.finance.entry</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="name"/>
+                <field name="entry_type"/>
+                <field name="amount"/>
+                <field name="pool_id"/>
+                <field name="customer_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hudson_pool_finance_form" model="ir.ui.view">
+        <field name="name">hudson.pool.finance.form</field>
+        <field name="model">hudson.pool.finance.entry</field>
+        <field name="arch" type="xml">
+            <form string="Transaksi Keuangan">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="name"/>
+                            <field name="entry_type"/>
+                            <field name="amount"/>
+                        </group>
+                        <group>
+                            <field name="pool_id"/>
+                            <field name="customer_id"/>
+                            <field name="notes"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hudson_pool_finance_search" model="ir.ui.view">
+        <field name="name">hudson.pool.finance.search</field>
+        <field name="model">hudson.pool.finance.entry</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Deskripsi"/>
+                <field name="pool_id"/>
+                <field name="customer_id"/>
+                <filter string="Uang Masuk" name="income" domain="[('entry_type','=','income')]"/>
+                <filter string="Uang Keluar" name="expense" domain="[('entry_type','=','expense')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Tipe" context="{'group_by':'entry_type'}"/>
+                    <filter string="Kolam" context="{'group_by':'pool_id'}"/>
+                    <filter string="Pelanggan" context="{'group_by':'customer_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

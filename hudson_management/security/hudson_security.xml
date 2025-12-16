@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="group_hudson_admin" model="res.groups">
+        <field name="name">Hudson Admin</field>
+        <field name="category_id" ref="base.module_category_services"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_system'))]"/>
+    </record>
+
+    <record id="group_hudson_pool_admin" model="res.groups">
+        <field name="name">Admin Kolam</field>
+        <field name="category_id" ref="base.module_category_services"/>
+        <field name="implied_ids" eval="[(4, ref('group_hudson_admin')), (4, ref('group_hudson_pool_user'))]"/>
+    </record>
+
+    <record id="group_hudson_pool_user" model="res.groups">
+        <field name="name">Pengguna Kolam</field>
+        <field name="category_id" ref="base.module_category_services"/>
+    </record>
+</odoo>

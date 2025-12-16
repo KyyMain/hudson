@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="cleaning_type_economy" model="hudson.pool.cleaning.type">
+        <field name="name">Pembersihan Ekonomi</field>
+        <field name="code">ECO</field>
+        <field name="level">economy</field>
+        <field name="base_price">250000</field>
+        <field name="description">Pilihan hemat untuk pembersihan dasar kolam renang.</field>
+    </record>
+
+    <record id="cleaning_type_business" model="hudson.pool.cleaning.type">
+        <field name="name">Pembersihan Bisnis</field>
+        <field name="code">BUS</field>
+        <field name="level">business</field>
+        <field name="base_price">450000</field>
+        <field name="description">Paket menengah dengan pemeriksaan kualitas air dan filter.</field>
+    </record>
+
+    <record id="cleaning_type_exclusive" model="hudson.pool.cleaning.type">
+        <field name="name">Pembersihan Eksklusif</field>
+        <field name="code">EXC</field>
+        <field name="level">exclusive</field>
+        <field name="base_price">750000</field>
+        <field name="description">Perawatan lengkap termasuk balancing air, vacuum, dan detailing.</field>
+    </record>
+</odoo>

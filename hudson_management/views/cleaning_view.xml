@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hudson_pool_cleaning_job_tree" model="ir.ui.view">
+        <field name="name">hudson.pool.cleaning.job.tree</field>
+        <field name="model">hudson.pool.cleaning.job</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="pool_id"/>
+                <field name="customer_id"/>
+                <field name="cleaning_type_id"/>
+                <field name="scheduled_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hudson_pool_cleaning_job_form" model="ir.ui.view">
+        <field name="name">hudson.pool.cleaning.job.form</field>
+        <field name="model">hudson.pool.cleaning.job</field>
+        <field name="arch" type="xml">
+            <form string="Pembersihan Kolam">
+                <header>
+                    <button name="action_mark_in_progress" type="object" string="Mulai" states="draft,scheduled" class="oe_highlight"/>
+                    <button name="action_mark_cleaned" type="object" string="Selesai" states="in_progress,scheduled"/>
+                    <button name="action_mark_delayed" type="object" string="Tunda" states="scheduled,in_progress" class="oe_link"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="pool_id"/>
+                            <field name="customer_id" readonly="1"/>
+                            <field name="cleaning_type_id"/>
+                        </group>
+                        <group>
+                            <field name="scheduled_date"/>
+                            <field name="completed_date"/>
+                            <field name="reason_delay"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes" colspan="4"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hudson_pool_cleaning_job_search" model="ir.ui.view">
+        <field name="name">hudson.pool.cleaning.job.search</field>
+        <field name="model">hudson.pool.cleaning.job</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Tugas"/>
+                <field name="pool_id"/>
+                <field name="customer_id"/>
+                <field name="cleaning_type_id"/>
+                <filter string="Terjadwal" name="scheduled" domain="[('state','=','scheduled')]"/>
+                <filter string="Sedang" name="in_progress" domain="[('state','=','in_progress')]"/>
+                <filter string="Tertunda" name="delayed" domain="[('state','=','delayed')]"/>
+                <filter string="Selesai" name="cleaned" domain="[('state','=','cleaned')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Status" context="{'group_by':'state'}"/>
+                    <filter string="Jenis Pembersihan" context="{'group_by':'cleaning_type_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
