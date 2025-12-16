@@ -33,16 +33,16 @@ class PoolDashboard(models.Model):
         return self.env.ref(xml_id).read()[0]
 
     def action_open_customers(self):
-        return self._open_action("hudson_management.action_pool_customers")
+        return self._open_action("aio_management.action_pool_customers")
 
     def action_open_pools(self):
-        return self._open_action("hudson_management.action_pools")
+        return self._open_action("aio_management.action_pools")
 
     def action_open_cleaning_jobs(self):
-        return self._open_action("hudson_management.action_pool_cleaning_jobs")
+        return self._open_action("aio_management.action_pool_cleaning_jobs")
 
     def action_open_finance(self):
-        return self._open_action("hudson_management.action_pool_finance_entries")
+        return self._open_action("aio_management.action_pool_finance_entries")
 
     def action_open_user_profile(self):
         user = self.env.user

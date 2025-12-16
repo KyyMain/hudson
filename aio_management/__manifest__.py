@@ -1,8 +1,8 @@
 {
-    "name": "Hudson Management",
+    "name": "AIO Management",
     "summary": "Divisi kolam renang dengan dashboard admin, data pelanggan, dan laporan.",
     "version": "16.0.1.0.0",
-    "author": "Hudson",
+    "author": "AIO",
     "license": "LGPL-3",
     "depends": ["base", "mail"],
     "data": [

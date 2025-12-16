@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem id="menu_hudson_root" name="Hudson Management" sequence="5" groups="group_hudson_pool_user"/>
+    <menuitem id="menu_hudson_root" name="AIO Management" sequence="5" groups="group_hudson_pool_user"/>
 
     <menuitem id="menu_pool_root" name="Divisi Kolam Renang" parent="menu_hudson_root" sequence="1" groups="group_hudson_pool_user"/>
 
